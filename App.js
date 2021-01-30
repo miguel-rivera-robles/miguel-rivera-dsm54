@@ -17,7 +17,6 @@ const App: () => React$Node = () => {
     <>
     <NavigationContainer>
       <CoinStack />
-      
       </NavigationContainer>
     
     </>

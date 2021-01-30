@@ -12,11 +12,23 @@ import CoinScreen from './CoinScreen';
 // declaracion de constante
 const Stack = createStackNavigator();
 
+import CoinDetailScreen from './CoinDetailScreen';
+
+
 //declaramos nuestro componente de tipo funcion
 const CoinStack = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name = "Coins" component={CoinScreen}/>
+            <Stack.Screen 
+            name="stack"  
+            component={CoinScreen}
+            />
+                        {/* //importamos el sstack de la pantalla de detalle*/}   
+         <Stack.Screen 
+            name="CoinDetailScreen"  
+            component={CoinDetailScreen}
+            />
+
         </Stack.Navigator>
     )
 } 
