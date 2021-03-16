@@ -20,7 +20,7 @@ const CoinStack = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen 
-            name="stack"  
+            name="Code Pinneaple"  
             component={CoinScreen}
             />
                         {/* //importamos el sstack de la pantalla de detalle*/}   
