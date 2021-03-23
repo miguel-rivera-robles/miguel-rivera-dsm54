@@ -12,9 +12,10 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {View, Text, StyleSheet } from 'react-native';
+//import {View, Text, StyleSheet } from 'react-native';
 import Flex from './src/components/Flex';
-
+import Categories from './src/categories/Categories';
+import Posts from './src/categories/Posts';
 
 /* Una funcion para que sea nuestro componente de home screen */
 function homeScreen() {
@@ -27,9 +28,8 @@ function homeScreen() {
 /* Una funcion para que sea nuestro componente de Categories screen */
 function categoriesScreen() {
   return(
-    <View style={{flex: 1,justifyContent: 'center',alignItems: 'center', backgroundColor:'#ebd8b7'}}>
-    <Text>Screen de Categorias</Text>
-    </View>
+    
+    <Categories />
   )
 }
 
@@ -37,9 +37,7 @@ function categoriesScreen() {
 /* Una funcion para que sea nuestro componente de Post screen */
 function postsScreen() {
   return(
-    <View style={{flex: 1,justifyContent: 'center',alignItems: 'center', backgroundColor:'#78CFB4'}}>
-    <Text>Screen de Posts</Text>
-    </View>
+    <Posts />
   )
 }
 
