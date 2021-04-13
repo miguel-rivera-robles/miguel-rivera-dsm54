@@ -2,10 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 //import Slider from './src/components/Slider';
 //import V2_BasedeDatos from './src/components/V2_BasedeDatos';
-const Flex = () => {
-  return (
+export const Home = () => {
+  return(
     <View style={[styles.container, {
-     
       flexDirection: "column"
     }]}>
             <View style={{ flex: 1, backgroundColor: "#fed049", justifyContent: "center"}}><Text style={styles.baseText}>Slider</Text></View>
@@ -23,7 +22,7 @@ const Flex = () => {
             </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -36,4 +35,3 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Flex;

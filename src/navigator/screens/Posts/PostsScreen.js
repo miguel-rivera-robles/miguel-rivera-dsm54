@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, Text, View, StyleSheet} from 'react-native';
+import {ActivityIndicator, FlatList, Text, View, StyleSheet,Image} from 'react-native';
 
-export const Categories = () =>{
+
+export default function PostsScreen(){
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
     useEffect(()=>{
-        fetch('http://10.0.2.2:8000/luar_coffe/public/api/productos')
+        fetch('http://10.0.2.2:8000/api/posts')
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => console.error(error))
@@ -15,7 +16,6 @@ export const Categories = () =>{
 
     return(
         <View style={styles.header}>
-            <Text style={{fontSize: 20, fontWeight:'bold' }}> Productos</Text>
         <View style={styles.container}>
             
             {isLoading ? <ActivityIndicator/> : (
@@ -24,7 +24,15 @@ export const Categories = () =>{
                     data={data}
                     keyExtractor={({ id }, index) => id.toString()}
                     renderItem={({ item }) => (
-                        <Text style={styles.categoyText}>{item.id}. Categoría: {item.nombre}, Descripción: {item.obs}</Text>
+                      <View style={{flex: 1, flexDirection: 'row'}}>
+                      <Image
+                      style={{width:60, height:60, borderRadius:50}}
+                      source={{uri: item.image}}/>
+                        <View>
+                          <Text style={styles.text}>{item.title}</Text>
+                        </View>
+                      </View>    
+                          
                     )}
                 />
                 </View>
@@ -46,12 +54,12 @@ const styles = StyleSheet.create({
     },
     container: {
       flex: 1,
-      padding: 20,
+      padding: 10,
       justifyContent: 'center',
     },
     list: {
-        marginTop: 20,
-        padding: 20,
+        marginTop: 5,
+        padding: 5,
         flex: 1,
         backgroundColor: 'white',
         justifyContent: 'center',
@@ -60,14 +68,14 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
     },
-    categoyText:{
+    text:{
         flex: 1,
-        padding: 10,
+        padding: 3,
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 16,
         justifyContent: 'center',
         alignItems: 'center',
     }
-
   });
+
   

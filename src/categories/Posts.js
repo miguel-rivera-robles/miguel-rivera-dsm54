@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, Text, View, StyleSheet} from 'react-native';
 
-export default Posts = () =>{
+export const Posts = () =>{
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
@@ -24,7 +24,7 @@ export default Posts = () =>{
             data={data}
             keyExtractor={({ id }, index) => id.toString()}
             renderItem={({ item }) => (
-              <Text style={styles.postsText}>{item.id}, {item.title}, {item.description}</Text>
+              <Text style={styles.postsText}>{item.id}, {item.title}</Text>
             )}
           />
           </View>
@@ -33,13 +33,13 @@ export default Posts = () =>{
       </View>
            
     );
-};
+}
 const styles = StyleSheet.create({
     header: {
         flex: 1,
         width: '100%',
         height: 20,
-        backgroundColor: '#6155a6',
+        backgroundColor: '#0e49b5',
         alignItems: 'center',
         justifyContent: 'center',
     },

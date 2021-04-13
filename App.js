@@ -6,83 +6,60 @@
  * @flow strict-local
  */
 
-//import CoinStack from './src/components/coins/CoinStack';
-//import { color } from 'react-native-reanimated';
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-//import {View, Text, StyleSheet } from 'react-native';
-import Flex from './src/components/Flex';
-import Categories from './src/categories/Categories';
-import Posts from './src/categories/Posts';
-
-/* Una funcion para que sea nuestro componente de home screen */
-function homeScreen() {
-  return(
-        <Flex />
-  )
-}
-
-
-/* Una funcion para que sea nuestro componente de Categories screen */
-function categoriesScreen() {
-  return(
-    
-    <Categories />
-  )
-}
-
-
-/* Una funcion para que sea nuestro componente de Post screen */
-function postsScreen() {
-  return(
-    <Posts />
-  )
-}
-
-const Tab=createBottomTabNavigator();
-
-const App: () => React$Node = () => {
-  return (
-    <>
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Home"
-          tabBarOptions={{
-            activeTintColor: '#070606',
-            labelStyle:{
-            fontSize:15
-          },
-          }}
-        >
-          <Tab.Screen name="Home" component={homeScreen}
+ import React from 'react';
+ import {Text, View} from 'react-native';
+ //navigator Container
+ import { NavigationContainer } from '@react-navigation/native';
+ //bottomTabNavigator
+ import { createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+ //importamos la libreria iconos
+ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+ import { HomeStack } from './src/navigator/stacks/HomeStack';
+ import { CategoriesStack } from './src/navigator/stacks/CategoriesStack';
+ import { PostsStack } from './src/navigator/stacks/PostsStack';
+ import { InfoStack } from './src/navigator/stacks/InfoStack';
+ 
+ 
+ const Tab = createBottomTabNavigator();
+ 
+ export default function App(){
+   return (
+       <NavigationContainer>
+         <Tab.Navigator>
+           <Tab.Screen name="Inicio" component={HomeStack}
             options={{
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="home" color={'#6e7c7c'} size={25} />
-              ),
-            }}
-            />
-          <Tab.Screen name="Categories" component={categoriesScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="cards-variant" color={'#6e7c7c'} size={25} />
-              ),
-            }}
-          />
-          <Tab.Screen name="Posts" component={postsScreen}
+             tabBarIcon: ({ color, size }) => (
+               <MaterialCommunityIcons name="home" color={'#F32A64'} size={35} />
+             ),
+           }}
+           />
+           <Tab.Screen name="Categorias" component={CategoriesStack} 
              options={{
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="bookmark-multiple-outline" color={'#435560'} size={25} />
-              ),
-            }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
-    
-    </>
+               tabBarIcon: ({ color, size }) => (
+                 <MaterialCommunityIcons name="dock-window" color={'#F32A64'} size={35} />
+               ),
+             }}
+           />
+           <Tab.Screen name="Post" component={PostsStack}
+               options={{
+                 tabBarIcon: ({ color, size }) => (
+                   <MaterialCommunityIcons name="newspaper" color={'#F32A64'} size={35} />
+                 ),
+               }}
+           />
+             <Tab.Screen name="Info" component={InfoStack} 
+               options={{
+                 tabBarIcon: ({ color, size }) => (
+                   <MaterialCommunityIcons name="information" color={'#F32A64'} size={35} />
+                 ),
+               }}
+           />
+         </Tab.Navigator>
+       </NavigationContainer>
    );
-};
-
-
-export default App;
+   
+ }
+  
+ 
+ 
+   
