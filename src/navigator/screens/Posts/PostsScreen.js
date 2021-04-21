@@ -29,7 +29,7 @@ export default function PostsScreen(){
                     renderItem={({ item }) => (
                       <View>
                           <Card>
-                          <Card.Title title={item.id} subtitle={item.title} />
+                          <Card.Title title={item.id} subtitle={item.title} left={LeftContent} />
                           <Card.Content>
                             <Title>{item.slug}</Title>
                             <Paragraph>{item.description}</Paragraph>
