@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, Text, View, StyleSheet,Image} from 'react-native';
+import{Avatar, Card, Title, Paragraph } from 'react-native-paper';
 
+
+const LeftContent = props => <Avatar.Icon {...props} icon="card-text" />
 
 export default function PostsScreen(){
     const [isLoading, setLoading] = useState(true);
@@ -15,58 +18,40 @@ export default function PostsScreen(){
     }, []);
 
     return(
-        <View style={styles.header}>
+        
         <View style={styles.container}>
             
             {isLoading ? <ActivityIndicator/> : (
-                <View style={styles.list}>
+                
                 <FlatList
                     data={data}
                     keyExtractor={({ id }, index) => id.toString()}
                     renderItem={({ item }) => (
-                      <View style={{flex: 1, flexDirection: 'row'}}>
-                      <Image
-                      style={{width:60, height:60, borderRadius:50}}
-                      source={{uri: item.image}}/>
-                        <View>
-                          <Text style={styles.text}>{item.title}</Text>
-                        </View>
-                      </View>    
-                          
+                      <View>
+                          <Card>
+                          <Card.Title title={item.id} subtitle={item.title} />
+                          <Card.Content>
+                            <Title>{item.slug}</Title>
+                            <Paragraph>{item.description}</Paragraph>
+                          </Card.Content>
+                          <Card.Cover source={{ uri: item.image }} />
+                          </Card>
+                      </View>
                     )}
                 />
-                </View>
+               
             )}
            </View> 
-        </View> 
+        
        
     );
 };
 
 const styles = StyleSheet.create({
-    header: {
-        flex: 1,
-        width: '100%',
-        height: 20,
-        backgroundColor: '#d3e0dc',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     container: {
       flex: 1,
       padding: 10,
       justifyContent: 'center',
-    },
-    list: {
-        marginTop: 5,
-        padding: 5,
-        flex: 1,
-        backgroundColor: 'white',
-        justifyContent: 'center',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
     },
     text:{
         flex: 1,

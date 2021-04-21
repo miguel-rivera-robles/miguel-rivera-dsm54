@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 export const  PostsStack = () =>{
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Posts" component={PostsScreen} />
+            <Stack.Screen name="POSTS" component={PostsScreen} />
         </Stack.Navigator>
     );
 }

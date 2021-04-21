@@ -14,7 +14,7 @@ export const HomeStack = () =>{
 
     return(
         <Stack.Navigator >
-            <Stack.Screen name="DSM54" component={HomeScreen} />
+            <Stack.Screen name="Luar Coffe" component={HomeScreen} />
         </Stack.Navigator>
     );
 }
